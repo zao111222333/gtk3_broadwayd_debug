@@ -1,7 +1,8 @@
 #! /bin/bash
 export GDK_BACKEND=broadway
+ulimit -c unlimited
 /opt/gtk/bin/broadwayd -p 5000&
-set_time=1
+sleep 1
 i=1
 while true
 do  
@@ -25,7 +26,6 @@ do
     fi
     let i+=1
 done
+cd /tmp
+gdb /opt/gtk/bin/gtk3-icon-browser core*
 /bin/bash
-# gdb /opt/gtkwave/bin/gtkwave.origin core
-# coredumpctl gdb $PID
-# coredumpctl -o gtkwave.coredump dump /opt/gtkwave/bin/gtkwave.origin

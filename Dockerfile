@@ -1,5 +1,6 @@
+# echo '/tmp/core.%t.%e.%p' | sudo tee /proc/sys/kernel/core_pattern
 # docker build --network host -t zao111222333/gtk3:debug -f Dockerfile .
-# docker run --rm -it -p 5000:5000 zao111222333/gtk3:debug
+# docker run --rm --ulimit core=-1 --security-opt seccomp=unconfined -it -p 5000:5000 zao111222333/gtk3:debug
 # docker push zao111222333/gtk3:debug
 
 # =============== BUILD =================
@@ -148,6 +149,5 @@ RUN apt-get install -y --no-install-recommends \
     gdb\
     systemd-coredump\
     procps
-
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
