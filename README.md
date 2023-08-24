@@ -5,13 +5,14 @@
    To ensure docker process could generate `core` file.
 2. `docker run --rm --ulimit core=-1 --security-opt seccomp=unconfined -it -p 5000:5000 zao111222333/gtk3:debug`
 
-   Run docker and you will enter gdb terminal.
+   Run docker and you will enter gdb terminal. This docker image will start with a test script [entrypoint.sh](https://github.com/zao111222333/gtk3_broadwayd_debug/blob/main/entrypoint.sh), which will start a `broadwayd` process at `:0` display on `5000` port, then loop start & stop a gtk-program, until it meet any error. After testing many times I found the **core dumped** will always occur at time 21.
+
 
 The dockerfile can be found at [https://github.com/zao111222333/gtk3_broadwayd_debug](https://github.com/zao111222333/gtk3_broadwayd_debug/blob/main/Dockerfile#L4-L5).
 
 ## Version information
 
-**Have benn verified:**
+**Have been verified:**
 
 `gtk+-3.24.38` + `ubuntu:22.04`
 
