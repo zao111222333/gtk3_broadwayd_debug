@@ -23,6 +23,10 @@ The dockerfile can be found at [https://github.com/zao111222333/gtk3_broadwayd_d
 /entrypoint.sh: line 28:   291 Bus error               (core dumped) /opt/gtk/bin/gtk3-icon-browser
 ```
 
+Here `gtk3-icon-browser` is just one instance, I also verified with `xclock`, `gtkwave`, etc.
+
+I found restart docker container can "refresh" this issue. I also tried to restart the `broadwayd` process but it can't help. Consequently I thought it might related to runtime memory?
+
 ## Backtrace
 
 ```plaintext
